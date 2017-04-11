@@ -12,6 +12,11 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    
+    @IBOutlet weak var chineseButton: UIButton!
+    @IBOutlet weak var koreanButton: UIButton!
+    @IBOutlet weak var spanishButton: UIButton!
+    var currLanguage: UIButton?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +36,22 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-
+    @IBAction func chineseTouched(_ sender: UIButton) {
+        currLanguage?.layer.borderWidth = 0
+        currLanguage = chineseButton
+        chineseButton.layer.borderWidth = 3
+        chineseButton.layer.borderColor = UIColor.white as! CGColor
+        
+    }
+    @IBAction func koreanTouched(_ sender: UIButton) {
+        currLanguage?.layer.borderWidth = 0
+        currLanguage = chineseButton
+        koreanButton.layer.borderWidth = 3
+        koreanButton.layer.borderColor = UIColor.white as! CGColor
+    }
+    @IBAction func spanishTouched(_ sender: UIButton) {
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
