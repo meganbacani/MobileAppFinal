@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2626C9E51E9D710600DD722A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626C9E41E9D710600DD722A /* ViewController.swift */; };
 		D7F7BD461E9D687000D42DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7BD451E9D687000D42DDA /* AppDelegate.swift */; };
 		D7F7BD481E9D687100D42DDA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7F7BD471E9D687100D42DDA /* GameScene.sks */; };
 		D7F7BD4A1E9D687100D42DDA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7F7BD491E9D687100D42DDA /* Actions.sks */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2626C9E41E9D710600DD722A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D7F7BD421E9D687000D42DDA /* LanguageLeapMobileAppFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LanguageLeapMobileAppFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F7BD451E9D687000D42DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7F7BD471E9D687100D42DDA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				D7F7BD451E9D687000D42DDA /* AppDelegate.swift */,
 				D7F7BD471E9D687100D42DDA /* GameScene.sks */,
 				D7F7BD491E9D687100D42DDA /* Actions.sks */,
+				2626C9E41E9D710600DD722A /* ViewController.swift */,
 				D7F7BD4B1E9D687100D42DDA /* GameScene.swift */,
 				D7F7BD4D1E9D687100D42DDA /* GameViewController.swift */,
 				D7F7BD4F1E9D687100D42DDA /* Main.storyboard */,
@@ -272,6 +275,7 @@
 			files = (
 				D7F7BD4C1E9D687100D42DDA /* GameScene.swift in Sources */,
 				D7F7BD4E1E9D687100D42DDA /* GameViewController.swift in Sources */,
+				2626C9E51E9D710600DD722A /* ViewController.swift in Sources */,
 				D7F7BD461E9D687000D42DDA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +523,7 @@
 				D7F7BD721E9D687100D42DDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7F7BD731E9D687100D42DDA /* Build configuration list for PBXNativeTarget "LanguageLeapMobileAppFinalTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +532,7 @@
 				D7F7BD751E9D687100D42DDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7F7BD761E9D687100D42DDA /* Build configuration list for PBXNativeTarget "LanguageLeapMobileAppFinalUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +541,7 @@
 				D7F7BD781E9D687100D42DDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

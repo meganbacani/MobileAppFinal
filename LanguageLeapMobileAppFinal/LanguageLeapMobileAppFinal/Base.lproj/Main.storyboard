@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="LanguageLeapMobileAppFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="LanguageLeapMobileAppFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
@@ -74,11 +74,9 @@
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-
                         <outlet property="chineseButton" destination="Qhn-Iz-T8A" id="G7m-pX-2nn"/>
                         <outlet property="koreanButton" destination="8uW-V0-vFp" id="POO-YM-Kqb"/>
                         <outlet property="spanishButton" destination="mBx-Gv-c3d" id="rBr-ab-rZI"/>
-
                         <segue destination="0vh-s4-Olg" kind="show" identifier="play" id="XN4-1d-gyH"/>
                     </connections>
                 </viewController>
