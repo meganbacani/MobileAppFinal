@@ -18,6 +18,7 @@
 		D7F7BD561E9D687100D42DDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F7BD541E9D687100D42DDA /* LaunchScreen.storyboard */; };
 		D7F7BD611E9D687100D42DDA /* LanguageLeapMobileAppFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7BD601E9D687100D42DDA /* LanguageLeapMobileAppFinalTests.swift */; };
 		D7F7BD6C1E9D687100D42DDA /* LanguageLeapMobileAppFinalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7BD6B1E9D687100D42DDA /* LanguageLeapMobileAppFinalUITests.swift */; };
+		D7F7BD7A1E9D731100D42DDA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7BD791E9D731100D42DDA /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D7F7BD671E9D687100D42DDA /* LanguageLeapMobileAppFinalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LanguageLeapMobileAppFinalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F7BD6B1E9D687100D42DDA /* LanguageLeapMobileAppFinalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLeapMobileAppFinalUITests.swift; sourceTree = "<group>"; };
 		D7F7BD6D1E9D687100D42DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7F7BD791E9D731100D42DDA /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				D7F7BD521E9D687100D42DDA /* Assets.xcassets */,
 				D7F7BD541E9D687100D42DDA /* LaunchScreen.storyboard */,
 				D7F7BD571E9D687100D42DDA /* Info.plist */,
+				D7F7BD791E9D731100D42DDA /* Question.swift */,
 			);
 			path = LanguageLeapMobileAppFinal;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F7BD7A1E9D731100D42DDA /* Question.swift in Sources */,
 				D7F7BD4C1E9D687100D42DDA /* GameScene.swift in Sources */,
 				D7F7BD4E1E9D687100D42DDA /* GameViewController.swift in Sources */,
 				2626C9E51E9D710600DD722A /* ViewController.swift in Sources */,
