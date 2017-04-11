@@ -46,10 +46,6 @@ class ViewController: UIViewController {
         print(spanishQuestions[0].question!)
     }
     
-    @IBAction func testButtonPress(_ sender: UIButton) {
-        performSegue(withIdentifier: "play", sender: self)
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -89,7 +85,8 @@ class ViewController: UIViewController {
         if currLanguage != nil {
             print("can begin game")
             print(languageStr)
-            
+            performSegue(withIdentifier: "play", sender: self)
+
         }
         else{
             selectLang.backgroundColor = UIColor.red
