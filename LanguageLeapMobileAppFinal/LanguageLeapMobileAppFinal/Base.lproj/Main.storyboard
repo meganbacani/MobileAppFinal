@@ -42,7 +42,7 @@
                                     <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="chineseTouched:" destination="BV1-FR-VrT" eventType="touchUpInside" id="jy2-67-wK0"/>
+                                    <action selector="testButtonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="HZi-0J-Tzn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uW-V0-vFp">
@@ -51,9 +51,6 @@
                                 <state key="normal" title="Button" image="korea">
                                     <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="koreanTouched:" destination="BV1-FR-VrT" eventType="touchUpInside" id="jsa-Iw-mNq"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBx-Gv-c3d">
                                 <rect key="frame" x="251" y="355" width="69" height="60"/>
@@ -61,9 +58,6 @@
                                 <state key="normal" title="Button" image="spain">
                                     <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="spanishTouched:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Rth-zJ-tWn"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-3h-6oz">
                                 <rect key="frame" x="305" y="20" width="54" height="54"/>
@@ -74,9 +68,6 @@
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="chineseButton" destination="Qhn-Iz-T8A" id="G7m-pX-2nn"/>
-                        <outlet property="koreanButton" destination="8uW-V0-vFp" id="POO-YM-Kqb"/>
-                        <outlet property="spanishButton" destination="mBx-Gv-c3d" id="rBr-ab-rZI"/>
                         <segue destination="0vh-s4-Olg" kind="show" identifier="play" id="XN4-1d-gyH"/>
                     </connections>
                 </viewController>
@@ -96,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECh-gN-wpi">
-                                <rect key="frame" x="0.0" y="269" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="253" width="375" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Final Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOS-BJ-rYi">
@@ -106,16 +97,23 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-UT-V1X">
+                                        <rect key="frame" x="164" y="98" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Done"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghn-RO-UTa">
                                         <rect key="frame" x="164" y="60" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Done"/>
+                                        <state key="normal" title="Replay"/>
+                                        <connections>
+                                            <action selector="replayPressed:" destination="0vh-s4-Olg" eventType="touchUpInside" id="HgN-h4-27w"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="endView" destination="ECh-gN-wpi" id="db2-vb-POV"/>
@@ -124,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qge-DT-Q2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="139"/>
+            <point key="canvasLocation" x="968.79999999999995" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
