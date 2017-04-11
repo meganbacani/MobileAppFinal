@@ -40,14 +40,14 @@ class GameViewController: UIViewController {
         currLanguage?.layer.borderWidth = 0
         currLanguage = chineseButton
         chineseButton.layer.borderWidth = 3
-        chineseButton.layer.borderColor = UIColor.white as! CGColor
+        //chineseButton.layer.borderColor = UIColor.white as! CGColor
         
     }
     @IBAction func koreanTouched(_ sender: UIButton) {
         currLanguage?.layer.borderWidth = 0
         currLanguage = chineseButton
         koreanButton.layer.borderWidth = 3
-        koreanButton.layer.borderColor = UIColor.white as! CGColor
+        //koreanButton.layer.borderColor = UIColor.white as! CGColor
     }
     @IBAction func spanishTouched(_ sender: UIButton) {
     }
