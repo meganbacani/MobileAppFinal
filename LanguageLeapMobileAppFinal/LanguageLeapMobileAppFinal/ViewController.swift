@@ -81,6 +81,21 @@ class ViewController: UIViewController {
 
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "play"{
+            let destController = segue.destination as! GameViewController
+            if languageStr == "Chinese" {
+                destController.qArray = chineseQuestions
+            }
+            if languageStr == "Korean" {
+                destController.qArray = koreanQuestions
+            }
+            if languageStr == "Spanish" {
+                destController.qArray = spanishQuestions
+            }
+        }
+    }
+    
     @IBAction func beginTouched(_ sender: UIButton) {
         if currLanguage != nil {
             print("can begin game")

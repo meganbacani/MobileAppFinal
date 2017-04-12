@@ -20,9 +20,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player:SKSpriteNode!
     let fence = SKSpriteNode(imageNamed: "fence")
     var buttons:[SKSpriteNode] = []
-    var score = -1
+    var questionLabel:SKLabelNode!
+    var answerLabel:SKLabelNode!
+    var score = 0
     var gameOver = false
     var fenceCleared = true
+    var qArray:[Question] = []
+    var arrayIndex:Int = 0
+    var correctAnswer = false
+    var alreadyAnswered = false
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -33,10 +39,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.run(SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run(addFences),
-                SKAction.wait(forDuration: 4.0),
                 SKAction.run(askQuestion),
-                SKAction.wait(forDuration: 10.0)
+                SKAction.wait(forDuration: 7.0),
+                SKAction.run(cleanButtons),
+                SKAction.run(addFences),
+                SKAction.wait(forDuration: 4.0)
                 ])
         ))
     }
@@ -73,7 +80,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMoveDone = SKAction.removeFromParent()
         fence.run(SKAction.sequence([actionMove, actionMoveDone]))
         
-        score += 1
+        print(correctAnswer)
+        if correctAnswer {
+            score += 1
+            print(score)
+            correctAnswer = false
+        }
     }
     
     func addButtons(){
@@ -89,41 +101,59 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let buttonColor:SKColor = UIColor(red: CGFloat(red[i]), green: CGFloat(green[i]), blue: CGFloat(blue[i]), alpha: 1.0)
             let button = SKSpriteNode(color: buttonColor, size: CGSize(width: self.frame.width/2.0, height: 60))
             button.position = positions[i]
-            button.isUserInteractionEnabled = true
+            button.isUserInteractionEnabled = false
+            button.name = "button\(i)"
             buttons.append(button)
             self.addChild(button)
         }
     }
     
     func addText(){
-        let answers = ["A", "B", "C", "D"]
+        if arrayIndex >= qArray.count {
+            arrayIndex = 0
+        }
+        let quest = qArray[arrayIndex]
+        
+        let answers = quest.options
         for i in 0..<4{
             let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-            myLabel.fontSize = 30
+            myLabel.fontSize = 20
             myLabel.fontColor = SKColor.white
             myLabel.horizontalAlignmentMode = .center
             myLabel.verticalAlignmentMode = .center
             myLabel.text = answers[i]
+            myLabel.name = "label\(i)"
             buttons[i].addChild(myLabel)
         }
         
-        let question = "This is a question?"
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        let question = quest.question
+        questionLabel = SKLabelNode(fontNamed:"Chalkduster")
         let w = self.frame.width
         let h = self.frame.height
-        myLabel.fontSize = 30
-        myLabel.fontColor = SKColor.black
-        myLabel.horizontalAlignmentMode = .center
-        myLabel.verticalAlignmentMode = .center
-        myLabel.position = CGPoint(x: w * 0.50, y: h * 0.9)
-        myLabel.text = question
-        self.addChild(myLabel)
+        questionLabel.fontSize = 20
+        questionLabel.fontColor = SKColor.black
+        questionLabel.horizontalAlignmentMode = .center
+        questionLabel.verticalAlignmentMode = .center
+        questionLabel.position = CGPoint(x: w * 0.50, y: h * 0.9)
+        questionLabel.name = "questionLabel"
+        questionLabel.text = question
+        self.addChild(questionLabel)
     }
     
     func askQuestion(){
+        buttons = []
         addButtons()
         addText()
-        
+    }
+    
+    func cleanButtons(){
+        for i in 0..<4{
+            buttons[i].removeAllChildren()
+        }
+        self.removeChildren(in: buttons)
+        self.removeChildren(in: [questionLabel, answerLabel])
+        arrayIndex += 1
+        alreadyAnswered = false
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -134,13 +164,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameController.stopGame(finalScore)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let jumpUpAction = SKAction.moveBy(x: 0, y:size.height * 0.40, duration:0.6)
-        let jumpDownAction = SKAction.moveBy(x: 0, y:-(size.height * 0.40), duration:0.6)
-        let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
+    func printCorrectness(_ correctAns: String){
+        var ans = "Correct!"
+
+        if !correctAnswer {
+            ans = "Incorrect! The answer is \(correctAns)"
+        }
         
-        // make player run sequence
-        player.run(jumpSequence)
+        answerLabel = SKLabelNode(fontNamed:"Chalkduster")
+        let w = self.frame.width
+        let h = self.frame.height
+        answerLabel.fontSize = 15
+        answerLabel.fontColor = SKColor.black
+        answerLabel.horizontalAlignmentMode = .center
+        answerLabel.verticalAlignmentMode = .center
+        answerLabel.position = CGPoint(x: w * 0.50, y: h * 0.6)
+        answerLabel.name = "answerLabel"
+        answerLabel.text = ans
+        self.addChild(answerLabel)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if arrayIndex >= qArray.count {
+            arrayIndex = 0
+        }
+        let quest = qArray[arrayIndex]
+        let correctIndex = quest.correctAnsIndex
+        
+        for touch:UITouch in touches {
+            let positionInScene = touch.location(in: self)
+            let touchedNode = self.atPoint(positionInScene)
+            if let name = touchedNode.name {
+                if !alreadyAnswered {
+                    print("Name is \(name)")
+                    if correctIndex == Int(name.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined()){
+                        correctAnswer = true
+                    }
+                    else{
+                        correctAnswer = false
+                    }
+                    printCorrectness(quest.options[correctIndex])
+                    alreadyAnswered = true
+                }
+            }
+            else{
+                let jumpUpAction = SKAction.moveBy(x: 0, y:size.height * 0.40, duration:0.6)
+                let jumpDownAction = SKAction.moveBy(x: 0, y:-(size.height * 0.40), duration:0.6)
+                let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
+                
+                // make player run sequence
+                player.run(jumpSequence)
+
+            }
+        }
+        
     }
 }
 

@@ -13,12 +13,14 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var endView: UIView!
     @IBOutlet weak var finalScore: UILabel!
-    
+    var qArray:[Question] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let scene = GameScene(size: view.bounds.size)
         scene.imageName = "frog"
         scene.gameController = self
+        scene.qArray = qArray
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
