@@ -109,10 +109,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let question = "This is a question?"
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        let w = self.frame.width
+        let h = self.frame.height
         myLabel.fontSize = 30
         myLabel.fontColor = SKColor.black
         myLabel.horizontalAlignmentMode = .center
         myLabel.verticalAlignmentMode = .center
+        myLabel.position = CGPoint(x: w * 0.50, y: h * 0.9)
         myLabel.text = question
         self.addChild(myLabel)
     }
