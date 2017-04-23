@@ -151,7 +151,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             buttons[i].removeAllChildren()
         }
         self.removeChildren(in: buttons)
-        self.removeChildren(in: [questionLabel, answerLabel])
+        self.removeChildren(in: [questionLabel])
+        if answerLabel != nil{
+            self.removeChildren(in: [answerLabel])
+        }
         arrayIndex += 1
         alreadyAnswered = false
     }

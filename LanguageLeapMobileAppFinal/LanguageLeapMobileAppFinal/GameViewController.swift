@@ -55,18 +55,16 @@ class GameViewController: UIViewController {
         let wlString = firstLetter + "WordsLearned";
         
         rootRef = FIRDatabase.database().reference()
-
-      //  if let rrSafe = rootRef
-        //{
             
-            let refChild = rootRef!.child("stats");
+        let refChild = rootRef!.child("stats");
 
         
         refChild.child(gpString).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                 let str = (snapshot.value as? String)!;
                 print(str);
                 self.gamesPlayed = Int(str);
-                var newGamesPlayed = self.gamesPlayed! + 1;
+                let newGamesPlayed = self.gamesPlayed! + 1;
+
                 refChild.child(gpString).setValue(String(newGamesPlayed));
 
             })
@@ -87,32 +85,17 @@ class GameViewController: UIViewController {
                 print(str);
 
                 self.wordsLearned = Int(str);
-                var newWordsLearned = self.wordsLearned! + score;
-                
+                let newWordsLearned = self.wordsLearned! + score;
 
                 refChild.child(wlString).setValue(String(newWordsLearned));
 
             })
-            
-      //  }
-        
-        
-        
-
-        
-
-        
-        
         
     }
     
     @IBAction func replayPressed(_ sender: UIButton) {
         endView.isHidden = true
         viewDidLoad()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destController = segue.destination as! ViewController
     }
     
     override var prefersStatusBarHidden: Bool {

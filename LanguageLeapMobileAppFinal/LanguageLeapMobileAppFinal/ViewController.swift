@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             let chineseChild = rrSafe.child("cQuestions")
 
             chineseChild.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-               var chineseCount = Int(snapshot.childrenCount);
+               let chineseCount = Int(snapshot.childrenCount);
                 for i in 0...chineseCount-1
                 {
                     chineseChild.child(String(i)).observe(FIRDataEventType.value, with: { (snapshot) in
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             let spanishChild = rrSafe.child("sQuestions")
 
             spanishChild.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-                var spanishCount = Int(snapshot.childrenCount);
+                let spanishCount = Int(snapshot.childrenCount);
                 for i in 0...spanishCount-1
                 {
                     spanishChild.child(String(i)).observe(FIRDataEventType.value, with: { (snapshot) in
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
             let koreanChild = rrSafe.child("kQuestions")
             
             koreanChild.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-                var koreanCount = Int(snapshot.childrenCount);
+                let koreanCount = Int(snapshot.childrenCount);
                 for i in 0...koreanCount-1
                 {
                     koreanChild.child(String(i)).observe(FIRDataEventType.value, with: { (snapshot) in
@@ -169,7 +169,6 @@ class ViewController: UIViewController {
     @IBAction func beginTouched(_ sender: UIButton) {
         if currLanguage != nil {
             print("can begin game")
-            print(languageStr)
             performSegue(withIdentifier: "play", sender: self)
 
         }
